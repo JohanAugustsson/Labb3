@@ -1,16 +1,119 @@
 body{
-  background-color: rgb(84, 164, 152);
+  background-color: #222831;
+  box-sizing: border-box;
+}
+
+.wrapper{
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.menubar{
+  flex:1 1 20%;
+  height: auto;
+  background-color: #393E46;
+  min-width: 300px;
+  max-width: 300px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.menubar #input-search{
+  display: inline-block;
+  border-radius: 7px;
+  padding: 5px;
+
+}
+.menubar  ul{
+  display: inline-block;
+
 }
 
 #main-container{
-  width: 900px;
-  margin: 0 auto;
-  height: 900px;
-  margin-bottom: 100px;
-  background-color: rgb(177, 95, 177);
+  min-width: 670px;
+  max-width: 1000px;
+  flex: 1 1 80%;
+
 }
-.head{
+
+.movie-container{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 50px;
+  grid-gap: 30px;
+}
+.movie{
+  grid-column: span 4;
+  grid-row: span 6;
+  min-width: 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  border-radius: 5px;
+}
+p.movie-description{
+  display: none;
+}
+.movie-container .medium{
+  grid-column: span 8;
+  grid-row: span 16;
+}
+
+
+.addMovieForm{
   width: 100%;
   height: 300px;
-  background-color: rgb(230, 122, 17);
+}
+.addMovieForm input{
+  display: block;
+}
+
+@media screen and (max-width: 960px){
+  .menubar{
+    width: 100%;
+    min-width: 100%;
+  }
+  .menubar ul li{
+    display: inline-block;
+  }
+  #main-container{
+    min-width: 100%;
+  }
+  .wrapper{
+    flex-wrap: wrap;
+  }
+  .movie{
+    grid-column: span 4;
+    grid-row: span 8;
+  }
+  .movie-container .medium{
+    grid-column: span 3;
+    grid-row: span 6;
+  }
+
+}
+
+@media screen and (max-width: 650px){
+  .menubar{
+    width: 100%;
+    min-width: 100%;
+  }
+  #main-container{
+    min-width: 100%;
+  }
+  .wrapper{
+    flex-wrap: wrap;
+  }
+  .movie{
+    grid-column: span 10;
+    grid-row: span 10;
+  }
+  .movie-container .medium{
+    grid-column: span 12;
+    grid-row: span 12;
+  }
+
 }

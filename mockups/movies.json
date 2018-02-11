@@ -1,0 +1,149 @@
+{
+  "movies" : {
+      "Rovdjuret" : {
+        "titel" : "Rovdjuret",
+        "regisör" :"Johan",
+        "premiärår" : 1987,
+        "imdb" : 7.2,
+        "about" : "Johan",
+      },
+      "-L4qLie3dYaKkDKzk4iy" : {
+        "date" : 1518109125397,
+        "message" : "tomte",
+        "nick" : "Johan",
+        "user" : "Johan Augustsson",
+        "userUid" : "3DpT0wlNOHR6OZfr9iXbUyXYbcC3"
+      },
+      "-L4qMjwpuCO73G53-Ng4" : {
+        "date" : 1518109392837,
+        "message" : "e",
+        "nick" : "Johan",
+        "user" : "Johan Augustsson",
+        "userUid" : "3DpT0wlNOHR6OZfr9iXbUyXYbcC3"
+      },
+      "-L4uHo59y1PbeOTP7i_K" : {
+        "date" : 1518175207967,
+        "message" : "hej",
+        "nick" : "Jonathan",
+        "user" : "Jonathan Johansson",
+        "userUid" : "Rh0wLOXGCzf2h8hB9JvHY3ycmxi1"
+      },
+      "-L4uIOE9TyD0pEGNSV4C" : {
+        "date" : 1518175360102,
+        "message" : "hejsan",
+        "nick" : "Robin",
+        "user" : "Robin Udéhn",
+        "userUid" : "MFWKrdAlRhYiisDpXiPIQm29fnt2"
+      },
+      "-L4uIPOAPwll5TyR0Hna" : {
+        "date" : 1518175364855,
+        "message" : "tjo",
+        "nick" : "Annie_Loof",
+        "user" : "Andreas Holmstedt",
+        "userUid" : "HLUexJ78xFRWLzmFaN2SsdPfgjo2"
+      },
+      "-L4uIRWMxeLoqgPR8CFt" : {
+        "date" : 1518175373553,
+        "likes" : {
+          "Rh0wLOXGCzf2h8hB9JvHY3ycmxi1" : {
+            "name" : "Jonathan Johansson",
+            "value" : "hearts"
+          }
+        },
+        "message" : "kom till ICA, ska börja jobba där nu",
+        "nick" : "Robin",
+        "user" : "Robin Udéhn",
+        "userUid" : "MFWKrdAlRhYiisDpXiPIQm29fnt2"
+      },
+      "-L4uISfFbgmMfzuRBdiC" : {
+        "date" : 1518175378275,
+        "message" : "jag med",
+        "nick" : "Jonathan",
+        "user" : "Jonathan Johansson",
+        "userUid" : "Rh0wLOXGCzf2h8hB9JvHY3ycmxi1"
+      },
+      "-L4uIX4R4SnczyKtriy_" : {
+        "date" : 1518175396334,
+        "message" : "vi har inte iq",
+        "nick" : "Jonathan",
+        "user" : "Jonathan Johansson",
+        "userUid" : "Rh0wLOXGCzf2h8hB9JvHY3ycmxi1"
+      },
+      "-L4uIcQznwOJjLOPSIo4" : {
+        "date" : 1518175422354,
+        "message" : "annie looof din röv",
+        "nick" : "Jonathan",
+        "user" : "Jonathan Johansson",
+        "userUid" : "Rh0wLOXGCzf2h8hB9JvHY3ycmxi1"
+      },
+      "-L4uIhz1sONdKbsX13ji" : {
+        "date" : 1518175445158,
+        "message" : "skapa mer jobb inom matvarubutiker",
+        "nick" : "Jonathan",
+        "user" : "Jonathan Johansson",
+        "userUid" : "Rh0wLOXGCzf2h8hB9JvHY3ycmxi1"
+      },
+      "-L4uImUDktqGW_4u-aT1" : {
+        "date" : 1518175463528,
+        "message" : "cd surf",
+        "nick" : "Robin",
+        "user" : "Robin Udéhn",
+        "userUid" : "MFWKrdAlRhYiisDpXiPIQm29fnt2"
+      },
+      "-L4uIsjiPUpqckSqzjoQ" : {
+        "date" : 1518175489161,
+        "message" : "Extrapris på bananer idag! kom och köp!",
+        "nick" : "Robin",
+        "user" : "Robin Udéhn",
+        "userUid" : "MFWKrdAlRhYiisDpXiPIQm29fnt2"
+      },
+      "-L4uJ-Yqu9lsKZYrHrxU" : {
+        "date" : 1518175521160,
+        "message" : "har inte råd jag jobbar på ica",
+        "nick" : "Jonathan",
+        "user" : "Jonathan Johansson",
+        "userUid" : "Rh0wLOXGCzf2h8hB9JvHY3ycmxi1"
+      },
+      "-L4uJ7MALjAGdXwC2aYF" : {
+        "date" : 1518175553125,
+        "message" : "cd surf",
+        "nick" : "Robin",
+        "user" : "Robin Udéhn",
+        "userUid" : "MFWKrdAlRhYiisDpXiPIQm29fnt2"
+      },
+      "-L4uJBBZ2sjnZHNXLZGN" : {
+        "date" : 1518175568822,
+        "likes" : {
+          "3DpT0wlNOHR6OZfr9iXbUyXYbcC3" : {
+            "name" : "Johan Augustsson",
+            "value" : "hearts"
+          }
+        },
+        "message" : "\"hej och välkommen till ica. här behövs inget iq för att få jobb!\"",
+        "nick" : "Jonathan",
+        "user" : "Jonathan Johansson",
+        "userUid" : "Rh0wLOXGCzf2h8hB9JvHY3ycmxi1"
+      },
+      "-L4wOriWvatbgrkd5Rqi" : {
+        "date" : 1518210612280,
+        "likes" : {
+          "3DpT0wlNOHR6OZfr9iXbUyXYbcC3" : {
+            "name" : "Johan Augustsson",
+            "value" : "poos"
+          }
+        },
+        "message" : "tihie",
+        "nick" : "Johan",
+        "user" : "Johan Augustsson",
+        "userUid" : "3DpT0wlNOHR6OZfr9iXbUyXYbcC3"
+      },
+      "-L4wVE_OmoSvbpDSzLEk" : {
+        "date" : 1518212282928,
+        "message" : "Tjho",
+        "nick" : "Johan",
+        "user" : "Johan Augustsson",
+        "userUid" : "W4EX3B3Dk8RCzUZXKVnb791AD5z2"
+      }
+    }
+
+}
