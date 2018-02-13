@@ -11,6 +11,11 @@
   </head>
   <body>
     http://colorhunt.co/c/2763
+    <div class="searchBar">
+      <div>
+        <input id="input-search"type="text" name="" value="" placeholder="Search: Titel Director Rating" />
+      </div>
+    </div>
     <div class="wrapper">
 
       <div class="menubar">
@@ -18,19 +23,14 @@
           <li><button id="btn-sortTitle">Title A-Z</button></li>
           <li><button id="btn-sortDirector">Director A-Z</button></li>
           <li><button id="btn-sortPremiere">Premiere A-Z</button></li>
-          <li>Comedy</li>
-          <li>Drama</li>
-          <li>Thriller</li>
-          <li>Thriller</li>
-
         </ul>
-        <input id="input-search"type="text" name="" value="" placeholder="Search" />
-
       </div>
-
 
       <div id="main-container">
         <div class= "movie-container"></div>
+        <div id="footer">
+          <button id="btn-next">Next</button>
+        </div>
         <div class="addMovieForm">
           <label for="title">Title</label>
           <input class="form-title" type="text" name="title" placeholder="Title"/>
@@ -38,18 +38,16 @@
           <input class="form-director"type="text" name="director" placeholder="Director"/>
           <label for="">Premiere data</label>
           <input class="form-premiere"type="text" name="premiere" placeholder="Premiere Date"/>
-          <label for="">Imdb</label>
-          <input class="form-imdb"type="text" name="imdb" placeholder="Imdb"/>
+          <label for="">Rating</label>
+          <input class="form-imdb"type="text" name="imdb" placeholder="Rating"/>
           <label for="">Description</label>
-          <input class="form-description"type="text" name="Description" placeholder="Description"/>
+          <textarea class="form-description" cols="40" rows="5" name="Description" placeholder="Description"/></textarea>
           <label for="">Picture</label>
-          <input class="form-picture"type="text" name="Picture" placeholder="Picture source. Exampel : htttp://picture.jpeg"/>
+          <input class="form-picture"type="text" name="Picture" placeholder="http://picture.jpeg"/>
           <button id="btn-SaveToDb">Save to database</button>
         </div>
         <div class="form">
-          <div id="footer">
-            <button id="btn-next">Next</button>
-          </div>
+
         </div>
 
       </div>

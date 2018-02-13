@@ -1,9 +1,8 @@
 // Global variables ----------------------------------------------------------->>
 let allMovies= {};
 let allMoviesList=[];
+let endAtMovies = 3;
 // ---------------------------------------------------------------------------//
-
-
 
 
 
@@ -38,11 +37,22 @@ window.addEventListener("load",function(event){
     configSort(event,"Premiere");
   })
 
+  let btnShowNext = document.getElementById('btn-next');
+  btnShowNext.addEventListener('click',function(event){
+
+    endAtMovies+=3;
+    getMovieFromDb();
+
+  })
 
 
   document.addEventListener("click",function(event){
+    if(event.target.className== "movie-btn-remove"){
 
-    console.log(event.target.getAttribute('databaseid'));
+      let dbid = event.target.getAttribute('databaseid');
+      removeMovie(dbid);
+    }
+
   })
 
 }); // windows load end-------------------------------------------------------//
@@ -64,11 +74,21 @@ let loadInputSearch=(target)=>{
     searchStr = searchStr.toLowerCase();
     allMoviesList = allMoviesList.filter(item=>{
       let title = item.title;
+      let director = item.director;
+      let imdb = item.imdb;
       title = title.toLowerCase();
+      director = director.toLowerCase();
 
-      if(title.includes(searchStr)){
+
+      if (!isNaN(searchStr)){  // for imdb search
+        if(searchStr<imdb){
+          return item
+
+        }
+      }else if (title.includes(searchStr) || director.includes(searchStr)) { //for titel and director search
         return item;
       }
+
     })
 
     renderMovies(); // Puts allMoviesList to html dom.
@@ -90,12 +110,12 @@ let saveToDatabase=()=>{
   let description = document.getElementsByClassName('form-description')[0];
   let picture = document.getElementsByClassName('form-picture')[0];
   let movieObj = {
-    title : title.value,
-    director: director.value,
-    premiere: premiere.value,
-    imdb: imdb.value,
-    description: description.value,
-    picture: picture.value
+    title : String(title.value),
+    director: String(director.value),
+    premiere: String(premiere.value),
+    imdb: String(imdb.value),
+    description: String(description.value),
+    picture: String(picture.value)
   }
   console.log(movieObj);
   firedb.ref('movies/').push(movieObj);
@@ -108,14 +128,23 @@ let saveToDatabase=()=>{
 
 
 //--------------------------  Get movies from db ----------------------------->>
-firedb.ref('/').once('value', function(snapshot){
-  allMovies = snapshot.val().movies;
-  sortMovieToList();
-  renderMovies();
-})
+let getMovieFromDb = ()=>{
+  firedb.ref('movies/').limitToLast(endAtMovies).on('value', function(snapshot){
+    allMovies = snapshot.val();
+    console.log(allMovies);
+    sortMovieToList();
+    renderMovies();
+  })
+}
+getMovieFromDb();
 //----------------------------------------------------------------------------//
 
 
+let a = firedb.ref('movies/').limitToLast(3)
+
+
+
+console.log(a);
 
 
 
@@ -135,15 +164,16 @@ let renderMovies = ()=>{
 
     let div = document.createElement("div");
     div.className="movie";
-    div.setAttribute("databaseid",dbId)
     div.style.backgroundImage= `url(${picture})`
 
     div.innerHTML = `<div class="movie-info">
                       <p class="movie-title"></p>
                       <p class="movie-director"></p>
-                      <p class="movie-description"></p>
                       <p class="movie-imdb"></p>
                       <p class="movie-premiere"></p>
+                       <span>Description: </span>
+                      <p class="movie-description"></p>
+                      <button class="movie-btn-remove">x</button>
                     </div>`
 
     div.getElementsByClassName("movie-title")[0].innerText = title;
@@ -151,6 +181,7 @@ let renderMovies = ()=>{
     div.getElementsByClassName("movie-imdb")[0].innerText = imdb;
     div.getElementsByClassName("movie-description")[0].innerText = description;
     div.getElementsByClassName("movie-premiere")[0].innerText = premiere;
+    div.getElementsByClassName("movie-btn-remove")[0].setAttribute("databaseid",dbId)
     movieContainer.appendChild(div);
   })
 }
@@ -208,4 +239,17 @@ let configSort = (event,sortBy)=>{
   }
 
 }
+//----------------------------------------------------------------------------//
+
+
+//------------------------ REMOVE MOVIE -------------------------------------->>
+
+removeMovie=(dbid)=>{
+  console.log(dbid);
+  firedb.ref(`/movies/${dbid}`).remove();
+}
+
+
+
+
 //----------------------------------------------------------------------------//
