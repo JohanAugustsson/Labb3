@@ -48,12 +48,13 @@ window.addEventListener("load",function(event){
 
   document.addEventListener("click",function(event){
     if(event.target.className== "movie-btn-remove"){
-
       let dbid = event.target.getAttribute('databaseid');
       removeMovie(dbid);
     }
-
   })
+
+
+
 
 }); // windows load end-------------------------------------------------------//
 
@@ -127,11 +128,11 @@ let saveToDatabase=()=>{
 
 
 
+
 //--------------------------  Get movies from db ----------------------------->>
 let getMovieFromDb = ()=>{
   firedb.ref('movies/').limitToLast(endAtMovies).on('value', function(snapshot){
     allMovies = snapshot.val();
-    console.log(allMovies);
     sortMovieToList();
     renderMovies();
   })
@@ -140,11 +141,6 @@ getMovieFromDb();
 //----------------------------------------------------------------------------//
 
 
-let a = firedb.ref('movies/').limitToLast(3)
-
-
-
-console.log(a);
 
 
 
@@ -176,12 +172,26 @@ let renderMovies = ()=>{
                       <button class="movie-btn-remove">x</button>
                     </div>`
 
-    div.getElementsByClassName("movie-title")[0].innerText = title;
-    div.getElementsByClassName("movie-director")[0].innerText = director;
-    div.getElementsByClassName("movie-imdb")[0].innerText = imdb;
-    div.getElementsByClassName("movie-description")[0].innerText = description;
-    div.getElementsByClassName("movie-premiere")[0].innerText = premiere;
+    let elementTitle = div.getElementsByClassName("movie-title")[0];
+    handleMovie(elementTitle,title,dbId,"title");
+
+    //div.getElementsByClassName("movie-director")[0].innerText = director;
+    let elementDirector = div.getElementsByClassName("movie-director")[0];
+    handleMovie(elementDirector,director,dbId,"director")
+
+    //div.getElementsByClassName("movie-imdb")[0].innerText = imdb;
+    let elementImdb = div.getElementsByClassName("movie-imdb")[0];
+    handleMovie(elementImdb,imdb,dbId,"imdb");
+
+    let elementDescription = div.getElementsByClassName("movie-description")[0];
+    handleMovie(elementDescription,description,dbId,"description");
+
+    let elementPremiere = div.getElementsByClassName("movie-premiere")[0];
+    handleMovie(elementPremiere,premiere,dbId,"premiere")
+
+
     div.getElementsByClassName("movie-btn-remove")[0].setAttribute("databaseid",dbId)
+
     movieContainer.appendChild(div);
   })
 }
@@ -189,6 +199,19 @@ let renderMovies = ()=>{
 // ---------------------------------------------------------------------------//
 
 
+let handleMovie=(target,str,dbId,path)=>{
+  target.innerText = str
+  target.setAttribute("contenteditable",true);
+  target.addEventListener("keypress",function(event){
+
+    if(event.keyCode=="13"){
+      event.preventDefault();
+      firedb.ref(`movies/${dbId}/${path}`).set(target.innerText);
+    }else if(event.keyCode=="10"){ // ctrl + Enter -> insert enter
+      target.innerText+= "\n"
+    }
+  })
+}
 
 
 
