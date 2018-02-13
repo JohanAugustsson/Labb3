@@ -175,11 +175,9 @@ let renderMovies = ()=>{
     let elementTitle = div.getElementsByClassName("movie-title")[0];
     handleMovie(elementTitle,title,dbId,"title");
 
-    //div.getElementsByClassName("movie-director")[0].innerText = director;
     let elementDirector = div.getElementsByClassName("movie-director")[0];
     handleMovie(elementDirector,director,dbId,"director")
 
-    //div.getElementsByClassName("movie-imdb")[0].innerText = imdb;
     let elementImdb = div.getElementsByClassName("movie-imdb")[0];
     handleMovie(elementImdb,imdb,dbId,"imdb");
 
@@ -188,7 +186,6 @@ let renderMovies = ()=>{
 
     let elementPremiere = div.getElementsByClassName("movie-premiere")[0];
     handleMovie(elementPremiere,premiere,dbId,"premiere")
-
 
     div.getElementsByClassName("movie-btn-remove")[0].setAttribute("databaseid",dbId)
 
@@ -199,6 +196,9 @@ let renderMovies = ()=>{
 // ---------------------------------------------------------------------------//
 
 
+
+
+//----------------------- Handle Every movie one by one and add listener------>>
 let handleMovie=(target,str,dbId,path)=>{
   target.innerText = str
   target.setAttribute("contenteditable",true);
@@ -212,6 +212,7 @@ let handleMovie=(target,str,dbId,path)=>{
     }
   })
 }
+// ---------------------------------------------------------------------------//
 
 
 

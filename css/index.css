@@ -50,10 +50,12 @@ body{
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.menubar #input-search{
+.menubar button{
   display: inline-block;
   border-radius: 7px;
+  margin: 5px;
   padding: 5px;
+  width: 200px;
 
 }
 .menubar  ul{
@@ -64,11 +66,7 @@ body{
 .menubar  li{
   list-style: none;
 }
-.menubar li>button{
-  width: 100px;
-  padding: 5px;
 
-}
 
 #main-container{
   min-width: 670px;
@@ -129,7 +127,15 @@ p.movie-description{
   grid-row: span 16;
 }
 
-
+#btn-next{
+  display: inline-block;
+  padding: 5px;
+  margin-left: 40%;
+  background-color: #00ADB5;
+  color: rgb(221,221,221);
+  min-width: 200px;
+  border-radius: 5px;
+}
 .addMovieForm{
   color: white;
   font-weight: bold;
