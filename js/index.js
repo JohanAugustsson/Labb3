@@ -170,6 +170,7 @@ let renderMovies = ()=>{
                        <span>Description: </span>
                       <p class="movie-description"></p>
                       <button class="movie-btn-remove">x</button>
+
                     </div>`
 
     let elementTitle = div.getElementsByClassName("movie-title")[0];
@@ -206,7 +207,13 @@ let handleMovie=(target,str,dbId,path)=>{
 
     if(event.keyCode=="13"){
       event.preventDefault();
-      firedb.ref(`movies/${dbId}/${path}`).set(target.innerText);
+
+      firedb.ref(`movies/${dbId}/${path}`).set(target.innerText).then(function(e){
+        document.getElementsByClassName('popUpMsg')[0].innerText="Database updated";
+        setTimeout(function () {
+            document.getElementsByClassName('popUpMsg')[0].innerText="";
+        }, 2000);
+      });
     }else if(event.keyCode=="10"){ // ctrl + Enter -> insert enter
       target.innerText+= "\n"
     }
@@ -227,6 +234,8 @@ let sortMovieToList=(sortBy)=>{
   }
 
 
+
+  allMoviesList.reverse();
 
   let sortList=(a,b)=>{
     if(a[sortBy] > b[sortBy]){
