@@ -14,9 +14,7 @@
   <body>
     http://colorhunt.co/c/2763
     <div class="searchBar">
-      <div>
-        <input id="input-search"type="text" name="" value="" placeholder="Search: Titel Director Rating" />
-      </div>
+      <input id="input-search"type="text" name="" value="" placeholder="Search: Titel Director Rating" />
     </div>
     <div class="wrapper">
 
@@ -25,6 +23,7 @@
           <li><button type="submit" id="btn-sortTitle">Title <i class="fas fa-arrow-alt-circle-down"></i> </button></li>
           <li><button type="submit" id="btn-sortDirector">Director <i class="fas fa-arrow-alt-circle-down"></i></button></li>
           <li><button type="submit" id="btn-sortPremiere">Premiere <i class="fas fa-arrow-alt-circle-down"></i></button></li>
+          <button id="btn-for-editable">Editable</button>
         </ul>
       </div>
 
@@ -33,10 +32,14 @@
         <div class= "movie-container"></div>
 
         <div id="footer">
-          <button id="btn-previous"><</button>
+          <div>
+            <button id="btn-previous"><</button>
             <ul id="pagination">
             </ul>
-          <button id="btn-next">></button>
+            <button id="btn-next">></button>
+
+
+          </div>
         </div>
 
         <div class= "movie-container">

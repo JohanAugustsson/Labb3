@@ -8,6 +8,7 @@ let pageNumber = 1;
 let sortBy = "first";
 let sortReverse = false;
 let isSortStrUsed=false;
+let isEditAble = false;
 // ---------------------------------------------------------------------------//
 
 
@@ -83,8 +84,24 @@ window.addEventListener("load",function(event){
   document.addEventListener("click",function(event){
     if(event.target.className== "movie-btn-remove"){
       let dbid = event.target.getAttribute('databaseid');
-      removeMovie(dbid);
+
+
+      if(isEditAble){
+        removeMovie(dbid);
+      }
+      updateDom();
     }
+  })
+
+
+  document.getElementById('btn-for-editable').addEventListener("click",function(event){
+    isEditAble = !isEditAble
+    if(isEditAble){
+      event.target.className="active";
+    }else{
+      event.target.className="";
+    }
+    updateDom();
   })
 
   setupDbListener();
@@ -108,45 +125,51 @@ let loadInputSearch=(target)=>{
 }
 
 let searchStrConfig=(event)=>{
-  document.getElementById('btn-sortTitle').className="";
+  document.getElementById('btn-sortTitle').className ="";
   document.getElementById('btn-sortDirector').className="";
   document.getElementById('btn-sortPremiere').className="";
-
   let searchStr = event.target.value;
   if(searchStr==""){
+
     isSortStrUsed=false;
-    sortMovieToList();
+    sortMovieToList(sortBy);
     showPages();               // setup pages
     paginationSetup();
     document.getElementById('footer').style.display="inline-block";
   }else{
     isSortStrUsed=true;
-
-    searchStr = searchStr.toLowerCase();
-    allMoviesList = allMoviesOrginList.filter(item=>{
-      let title = item.title;
-      let director = item.director;
-      let imdb = item.imdb;
-      title = title.toLowerCase();
-      director = director.toLowerCase();
-
-
-      if (!isNaN(searchStr)){  // for imdb search
-        if(searchStr<imdb){
-          return item
-
-        }
-      }else if (title.includes(searchStr) || director.includes(searchStr)) { //for titel and director search
-        return item;
-      }
-      document.getElementById('footer').style.display="none";
-    })
+    // lägg till så att denna körs även när man renderar på nytt och söksträng satt
+    searchByStr();
 
   }
 
   renderMovies(); // Puts allMoviesList to html dom.
 }
 
+let searchByStr=()=>{
+  let searchStr = document.getElementById('input-search').value;
+  allMoviesList= [];
+  allMoviesList = allMoviesOrginList.map(x=>x);
+  searchStr = searchStr.toLowerCase();
+  allMoviesList = allMoviesOrginList.filter(item=>{
+    let title = item.title;
+    let director = item.director;
+    let imdb = item.imdb;
+    title = title.toLowerCase();
+    director = director.toLowerCase();
+
+
+    if (!isNaN(searchStr)){  // for imdb search
+      if(searchStr<imdb){
+        return item
+
+      }
+    }else if (title.includes(searchStr) || director.includes(searchStr)) { //for titel and director search
+      return item;
+    }
+    document.getElementById('footer').style.display="none";
+  })
+}
 
 
 
@@ -253,12 +276,11 @@ let renderMovies = ()=>{
 //----------------------- Handle Every movie one by one and add listener------>>
 let handleMovie=(target,str,dbId,path)=>{
   target.innerText = str
-  target.setAttribute("contenteditable",true);
+  target.setAttribute("contenteditable",isEditAble);
   target.addEventListener("keypress",function(event){
 
     if(event.keyCode=="13"){
       event.preventDefault();
-
       firedb.ref(`movies/${dbId}/${path}`).set(target.innerText).then(function(e){
         document.getElementsByClassName('popUpMsg')[0].innerText="Database updated";
         setTimeout(function () {
@@ -277,13 +299,10 @@ let handleMovie=(target,str,dbId,path)=>{
 
 //-------------------------Offline sort metod -------------------------------->>
 let sortMovieToList=(sortBy)=>{
-
   allMoviesList= [];
   allMoviesList = allMoviesOrginList.map(x=>x);
 
-
   let sortList=(a,b)=>{
-
     if(a[sortBy] > b[sortBy]){
       return 1
     }else if (a[sortBy] < b[sortBy]) {
@@ -293,9 +312,12 @@ let sortMovieToList=(sortBy)=>{
     }
   }
 
-  if(sortBy!="first"){
-    allMoviesList = allMoviesList.sort(sortList);
-  }
+    //if(!isSortStrUsed){
+    if(sortBy!="first"){
+      allMoviesList = allMoviesList.sort(sortList);
+    }
+
+  //}
 }
 //----------------------------------------------------------------------------//
 
@@ -500,7 +522,8 @@ let setupDbListener= ()=>{
 let updateDom=()=>{
 
   if(isSortStrUsed){ // when collect data from data.. use the same filter when return.
-
+    searchByStr();
+    renderMovies();
   }else{
 
     sortMovieToList(sortBy);  // sort movies by title
@@ -511,12 +534,7 @@ let updateDom=()=>{
     showPages();               // setup pages
     paginationSetup();         // adds pagination at bot
     renderMovies();            // render movies on the html page
-
-
-
   }
-
-
 }
 
 
