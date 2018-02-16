@@ -5,7 +5,9 @@ let startAtMovies = 1;
 let endAtMovies = 6;
 let showMovies = endAtMovies;
 let pageNumber = 1;
-let sortBy = "title";
+let sortBy = "first";
+let sortReverse = false;
+let isSortStrUsed=false;
 // ---------------------------------------------------------------------------//
 
 
@@ -27,24 +29,27 @@ window.addEventListener("load",function(event){
 
   let btnSortTitle = document.getElementById('btn-sortTitle');
   btnSortTitle.addEventListener('click',function(event){
+    resetSearchParam();
     sortBy ="title";
     sortMovieToList(sortBy);
-    configSort(event,"Title");
+    configSort(btnSortTitle,"Title");
   })
 
 
   let btnSortDirector = document.getElementById('btn-sortDirector');
   btnSortDirector.addEventListener('click',function(event){
+    resetSearchParam();
     sortBy ="director";
     sortMovieToList(sortBy);
-    configSort(event,"Director");
+    configSort(btnSortDirector,"Director");
   })
 
   let btnSortPremiere = document.getElementById('btn-sortPremiere');
   btnSortPremiere.addEventListener('click',function(event){
+    resetSearchParam();
     sortBy ="premiere";
     sortMovieToList(sortBy);
-    configSort(event,"Premiere");
+    configSort(btnSortPremiere,"Premiere");
   })
 
   let btnShowNext = document.getElementById('btn-next');
@@ -97,45 +102,54 @@ window.addEventListener("load",function(event){
 
 
 let loadInputSearch=(target)=>{
-
   target.addEventListener("input",(event)=>{
-
-
-    let searchStr = event.target.value;
-    if(searchStr==""){
-      sortMovieToList();
-      showPages();               // setup pages
-      paginationSetup();
-      document.getElementById('footer').style.display="inline-block";
-    }else{
-
-
-      searchStr = searchStr.toLowerCase();
-      allMoviesList = allMoviesOrginList.filter(item=>{
-        let title = item.title;
-        let director = item.director;
-        let imdb = item.imdb;
-        title = title.toLowerCase();
-        director = director.toLowerCase();
-
-
-        if (!isNaN(searchStr)){  // for imdb search
-          if(searchStr<imdb){
-            return item
-
-          }
-        }else if (title.includes(searchStr) || director.includes(searchStr)) { //for titel and director search
-          return item;
-        }
-        document.getElementById('footer').style.display="none";
-      })
-
-    }
-
-    renderMovies(); // Puts allMoviesList to html dom.
-
+    searchStrConfig(event);
   })
 }
+
+let searchStrConfig=(event)=>{
+  document.getElementById('btn-sortTitle').className="";
+  document.getElementById('btn-sortDirector').className="";
+  document.getElementById('btn-sortPremiere').className="";
+
+  let searchStr = event.target.value;
+  if(searchStr==""){
+    isSortStrUsed=false;
+    sortMovieToList();
+    showPages();               // setup pages
+    paginationSetup();
+    document.getElementById('footer').style.display="inline-block";
+  }else{
+    isSortStrUsed=true;
+
+    searchStr = searchStr.toLowerCase();
+    allMoviesList = allMoviesOrginList.filter(item=>{
+      let title = item.title;
+      let director = item.director;
+      let imdb = item.imdb;
+      title = title.toLowerCase();
+      director = director.toLowerCase();
+
+
+      if (!isNaN(searchStr)){  // for imdb search
+        if(searchStr<imdb){
+          return item
+
+        }
+      }else if (title.includes(searchStr) || director.includes(searchStr)) { //for titel and director search
+        return item;
+      }
+      document.getElementById('footer').style.display="none";
+    })
+
+  }
+
+  renderMovies(); // Puts allMoviesList to html dom.
+}
+
+
+
+
 // ---------------------------------------------------------------------------//
 
 
@@ -164,6 +178,19 @@ let saveToDatabase=()=>{
 }
 //-------------------------------------------------------------------------------
 
+
+
+//----------------------- Reset Search Parameters ---------------------------->>
+let resetSearchParam=()=>{
+  document.getElementById('btn-sortTitle').className="";
+  document.getElementById('btn-sortDirector').className="";
+  document.getElementById('btn-sortPremiere').className="";
+  document.getElementById('input-search').value="";
+  document.getElementById('footer').style.display="inline-block";
+
+}
+
+//----------------------------------------------------------------------------//
 
 
 
@@ -306,16 +333,25 @@ let showPages=()=>{
 
 //--------------------- SORT BUTTONS > CHANGE TEXT --------------------------->>
 
-let configSort = (event,sortBy)=>{
-  if (event.target.innerText == `${sortBy} A-Z`){
+let configSort = (target,sortBy)=>{
+
+  document.getElementById('btn-sortTitle').className="";
+  document.getElementById('btn-sortDirector').className="";
+  document.getElementById('btn-sortPremiere').className="";
+
+  target.className="active"
+  //if (event.target.innerHTML == `${sortBy} <i class="fas fa-arrow-alt-circle-down">`){
+  if (target.innerHTML.includes("fa-arrow-alt-circle-down")){
+    sortReverse = false; // when collect from db.. use the same sort status
     showPages();
     renderMovies();
-    event.target.innerText =`${sortBy} Z-A`;
+    target.innerHTML =`${sortBy} <i class="fas fa-arrow-alt-circle-up"></i>`;
   }else{
     allMoviesList.reverse();
+    sortReverse = true;
     showPages();
     renderMovies();
-    event.target.innerText =`${sortBy} A-Z`;
+    target.innerHTML =`${sortBy} <i class="fas fa-arrow-alt-circle-down">`;
 
   }
 
@@ -462,10 +498,24 @@ let setupDbListener= ()=>{
 //------------------- UPDATE HTML SITE WHEN DB CHANGE------------------------->>
 
 let updateDom=()=>{
-  sortMovieToList(sortBy);  // sort movies by title
-  showPages();               // setup pages
-  paginationSetup();         // adds pagination at bot
-  renderMovies();            // render movies on the html page
+
+  if(isSortStrUsed){ // when collect data from data.. use the same filter when return.
+
+  }else{
+
+    sortMovieToList(sortBy);  // sort movies by title
+    if(sortReverse){
+      allMoviesList.reverse();
+    }
+
+    showPages();               // setup pages
+    paginationSetup();         // adds pagination at bot
+    renderMovies();            // render movies on the html page
+
+
+
+  }
+
 
 }
 
