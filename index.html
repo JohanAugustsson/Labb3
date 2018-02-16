@@ -8,6 +8,7 @@
     <script src="./services/dbservice.js" type="text/javascript"></script>
     <script src="./js/index.js" type="text/javascript"></script>
     <link href="./css/index.css" type="text/css" rel="stylesheet"></link>
+    <link rel="shortcut icon" type="image/png" href="/img/favicon2.png"/>
   </head>
   <body>
     http://colorhunt.co/c/2763
@@ -27,24 +28,33 @@
       </div>
 
       <div id="main-container">
+
         <div class= "movie-container"></div>
+
         <div id="footer">
-          <button id="btn-next">More...</button>
+          <button id="btn-previous"><</button>
+            <ul id="pagination">
+            </ul>
+          <button id="btn-next">></button>
         </div>
-        <div class="addMovieForm">
-          <label for="title">Title</label>
-          <input class="form-title" type="text" name="title" placeholder="Title"/>
-          <label for="director">Director</label>
-          <input class="form-director"type="text" name="director" placeholder="Director"/>
-          <label for="">Premiere data</label>
-          <input class="form-premiere"type="text" name="premiere" placeholder="Premiere Date"/>
-          <label for="">Rating</label>
-          <input class="form-imdb"type="text" name="imdb" placeholder="Rating"/>
-          <label for="">Description</label>
-          <textarea class="form-description" cols="40" rows="5" name="Description" placeholder="Description"/></textarea>
-          <label for="">Picture</label>
-          <input class="form-picture"type="text" name="Picture" placeholder="http://picture.jpeg"/>
-          <button id="btn-SaveToDb">Add to database</button>
+
+        <div class= "movie-container">
+          <div class="addMovieForm">
+            <label for="title">Title</label>
+            <input class="form-title" type="text" name="title" placeholder="Title"/>
+            <label for="director">Director</label>
+            <input class="form-director"type="text" name="director" placeholder="Director"/>
+            <label for="">Premiere data</label>
+            <input class="form-premiere"type="text" name="premiere" placeholder="Premiere Date"/>
+            <label for="">Rating</label>
+            <input class="form-imdb"type="text" name="imdb" placeholder="Rating"/>
+            <label for="">Description</label>
+            <textarea class="form-description" cols="40" rows="5" name="Description" placeholder="Description"/></textarea>
+            <label for="">Picture</label>
+            <input class="form-picture"type="text" name="Picture" placeholder="http://picture.jpeg"/>
+            <button id="btn-SaveToDb">Add to database</button>
+          </div>
+
         </div>
         <div class="form">
 

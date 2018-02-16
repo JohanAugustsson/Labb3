@@ -30,7 +30,9 @@ body{
   text-align: center;
   margin: 8px auto;
   margin-left: 20%;
-  border-radius: 10px;
+
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15  px;
   min-width: 350px;
 }
 .wrapper{
@@ -46,7 +48,7 @@ body{
   flex:1 1 20%;
   height: auto;
   background-color: #393E46;
-  min-width: 300px;
+  min-width: 200px;
   max-width: 300px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -56,7 +58,7 @@ body{
   border-radius: 7px;
   margin: 5px;
   padding: 5px;
-  width: 200px;
+  width: 100%;
 
 }
 .menubar  ul{
@@ -129,26 +131,51 @@ p.movie-description{
   grid-row: span 16;
 }
 
-#btn-next{
+#btn-next,#btn-previous{
   display: inline-block;
   padding: 5px;
-  margin-left: 40%;
   background-color: #00ADB5;
   color: rgb(221,221,221);
-  min-width: 200px;
   border-radius: 5px;
 }
+
+#footer{
+  display: inline-block;
+  min-width: 200px;
+  margin: 0 auto;
+}
+#pagination{
+  display: inline-block;
+  margin: 0 auto;
+  padding-left: 0px;
+}
+
+#pagination >li{
+  display: inline-block;
+  padding: 3px;
+}
+#pagination .active{
+  background-color: rgba(0, 173, 181, 0.8);
+
+}
+
+
 .addMovieForm{
+  position: relative;
+  grid-column: span 7;
+  grid-row: span 6;
+  min-width: 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
+  border-radius: 5px;
   font-weight: bold;
-  width: 100%-20px;
-  height: auto;
   margin-top: 20px;
-  padding: 20px 0px 60px 20px;
   background-color: rgba(0, 173, 181, 0.3);
 }
 .addMovieForm input, .addMovieForm textarea{
-  width: 300px;
+  width: 95%;
   display: block;
   border-radius: 7px;
   padding: 3px;
@@ -157,7 +184,7 @@ p.movie-description{
   height: 7em;
 }
 .addMovieForm button{
-  width:300px;
+  width: 95%;
   height: 3em;
   border-radius: 3px;
   margin-top: 20px;
@@ -177,27 +204,56 @@ p.movie-description{
   font-size: 2em;
   top: 50vh;
 }
-@media screen and (max-width: 960px){
+
+@media screen and (max-width: 1200px){
+  .addMovieForm{
+    grid-column: span 7 ;
+    grid-row: span 6;
+
+
+  }
+}
+@media screen and (max-width: 1000px){
+  .wrapper{
+    flex-wrap: wrap;
+  }
   .menubar{
     width: 100%;
     min-width: 100%;
   }
   .menubar ul li{
+
     display: inline-block;
   }
   #main-container{
     min-width: 100%;
+
   }
   .wrapper{
     flex-wrap: wrap;
+
   }
-  .movie{
+  .movie , .addMovieForm{
     grid-column: span 4;
-    grid-row: span 8;
+    grid-row: span 5;
+  }
+  .addMovieForm{
+    grid-column: span 7 ;
+    grid-row: span 6;
+
+
   }
   .movie-container .medium{
     grid-column: span 3;
     grid-row: span 6;
+  }
+
+  .searchBar{
+    width: 100%;
+  }
+  .searchBar div{
+    width: 100%;
+    margin-left: 0px;
   }
 
 }
@@ -209,18 +265,69 @@ p.movie-description{
   }
   #main-container{
     min-width: 100%;
-    background-color:
+
   }
   .wrapper{
     flex-wrap: wrap;
   }
-  .movie{
-    grid-column: span 10;
-    grid-row: span 10;
+  .movie , .addMovieForm{
+
+    grid-column: span 6;
+    grid-row: span 6;
+
   }
   .movie-container .medium{
     grid-column: span 12;
     grid-row: span 12;
   }
+  #input-search{
+    width: 95%;
+    margin-left: 0px;
+    min-width: 0px;
+  }
 
+}
+
+@media screen and (max-width: 650px){
+  .movie{
+    grid-column: span 12;
+    grid-row: span 8;
+    margin-left: 10%;
+    margin-right: 10%;
+
+  }
+  .addMovieForm{
+    grid-column: span 12;
+    grid-row: span 6;
+    margin-left: 10%;
+    margin-right: 10%;
+
+  }
+  #btn-next,#btn-previous{
+
+    width: 95%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 2%;
+  }
+
+}
+
+@media screen and (max-width: 360px){
+
+  .movie{
+    grid-column: span 9;
+    grid-row: span 6;
+    margin-left: 0px;
+    margin-right: 0px;
+    min-width: 50px;
+  }
+
+  .addMovieForm{
+    grid-column: span 9;
+    grid-row: span 6;
+    margin-left: 1%;
+    margin-right: 1%;
+
+  }
 }

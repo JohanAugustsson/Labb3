@@ -1,11 +1,7 @@
 // Global variables ----------------------------------------------------------->>
-let allMoviesOrginList=[];
+let allMovies= {};
 let allMoviesList=[];
-let startAtMovies = 1;
-let endAtMovies = 6;
-let showMovies = endAtMovies;
-let pageNumber = 1;
-let sortBy = "title";
+let endAtMovies = 3;
 // ---------------------------------------------------------------------------//
 
 
@@ -13,9 +9,6 @@ let sortBy = "title";
 // ------------------------- WINDOW LOAD ------------------------------------->>
 
 window.addEventListener("load",function(event){
-  getMovieFromDbFirstTime(); // pust all movies to the page
-
-
   let inputSearch = document.getElementById('input-search');
   loadInputSearch(inputSearch);
 
@@ -27,53 +20,31 @@ window.addEventListener("load",function(event){
 
   let btnSortTitle = document.getElementById('btn-sortTitle');
   btnSortTitle.addEventListener('click',function(event){
-    sortBy ="title";
-    sortMovieToList(sortBy);
+    sortMovieToList("title");
     configSort(event,"Title");
   })
 
 
   let btnSortDirector = document.getElementById('btn-sortDirector');
   btnSortDirector.addEventListener('click',function(event){
-    sortBy ="director";
-    sortMovieToList(sortBy);
+    sortMovieToList("director");
     configSort(event,"Director");
   })
 
   let btnSortPremiere = document.getElementById('btn-sortPremiere');
   btnSortPremiere.addEventListener('click',function(event){
-    sortBy ="premiere";
-    sortMovieToList(sortBy);
+    sortMovieToList("premiere");
     configSort(event,"Premiere");
   })
 
   let btnShowNext = document.getElementById('btn-next');
   btnShowNext.addEventListener('click',function(event){
-    pageNumber= Number(pageNumber)+ 1;
 
-    sortMovieToList(sortBy);
-    showPages();
-    renderMovies();
-    paginationMark();
+    endAtMovies+=3;
+    getMovieFromDb();
 
   })
 
-  let btnShowPrevious = document.getElementById('btn-previous');
-  btnShowPrevious.addEventListener('click',function(event){
-
-    if(pageNumber!=1){
-      pageNumber-=1;
-    }
-    if(pageNumber<1){
-      pageNumber=1;
-    }
-
-    sortMovieToList(sortBy);
-    showPages();
-    renderMovies();
-    paginationMark();
-
-  })
 
   document.addEventListener("click",function(event){
     if(event.target.className== "movie-btn-remove"){
@@ -82,11 +53,10 @@ window.addEventListener("load",function(event){
     }
   })
 
-  setupDbListener();
 
 
-});
-//---- windows load end-------------------------------------------------------//
+
+}); // windows load end-------------------------------------------------------//
 
 
 
@@ -99,38 +69,28 @@ window.addEventListener("load",function(event){
 let loadInputSearch=(target)=>{
 
   target.addEventListener("input",(event)=>{
-
+    sortMovieToList(); // Puts all movies to the list
 
     let searchStr = event.target.value;
-    if(searchStr==""){
-      sortMovieToList();
-      showPages();               // setup pages
-      paginationSetup();
-      document.getElementById('footer').style.display="inline-block";
-    }else{
+    searchStr = searchStr.toLowerCase();
+    allMoviesList = allMoviesList.filter(item=>{
+      let title = item.title;
+      let director = item.director;
+      let imdb = item.imdb;
+      title = title.toLowerCase();
+      director = director.toLowerCase();
 
 
-      searchStr = searchStr.toLowerCase();
-      allMoviesList = allMoviesOrginList.filter(item=>{
-        let title = item.title;
-        let director = item.director;
-        let imdb = item.imdb;
-        title = title.toLowerCase();
-        director = director.toLowerCase();
+      if (!isNaN(searchStr)){  // for imdb search
+        if(searchStr<imdb){
+          return item
 
-
-        if (!isNaN(searchStr)){  // for imdb search
-          if(searchStr<imdb){
-            return item
-
-          }
-        }else if (title.includes(searchStr) || director.includes(searchStr)) { //for titel and director search
-          return item;
         }
-        document.getElementById('footer').style.display="none";
-      })
+      }else if (title.includes(searchStr) || director.includes(searchStr)) { //for titel and director search
+        return item;
+      }
 
-    }
+    })
 
     renderMovies(); // Puts allMoviesList to html dom.
 
@@ -158,11 +118,28 @@ let saveToDatabase=()=>{
     description: String(description.value),
     picture: String(picture.value)
   }
-
+  console.log(movieObj);
   firedb.ref('movies/').push(movieObj);
 
 }
 //-------------------------------------------------------------------------------
+
+
+
+
+
+
+//--------------------------  Get movies from db ----------------------------->>
+let getMovieFromDb = ()=>{
+  firedb.ref('movies/').limitToLast(endAtMovies).on('value', function(snapshot){
+    allMovies = snapshot.val();
+    sortMovieToList();
+    renderMovies();
+  })
+}
+getMovieFromDb();
+//----------------------------------------------------------------------------//
+
 
 
 
@@ -172,7 +149,6 @@ let saveToDatabase=()=>{
 let renderMovies = ()=>{
   let movieContainer = document.getElementsByClassName("movie-container")[0];
   movieContainer.innerText="";
-
   allMoviesList.map(item=>{
     let picture = item.picture
     let title = item.title
@@ -252,11 +228,16 @@ let handleMovie=(target,str,dbId,path)=>{
 let sortMovieToList=(sortBy)=>{
 
   allMoviesList= [];
-  allMoviesList = allMoviesOrginList.map(x=>x);
+  for(let item in allMovies){
+    allMovies[item].databaseid= item;  //added to have the right referens from firebase.
+    allMoviesList.push(allMovies[item])
+  }
 
+
+
+  allMoviesList.reverse();
 
   let sortList=(a,b)=>{
-
     if(a[sortBy] > b[sortBy]){
       return 1
     }else if (a[sortBy] < b[sortBy]) {
@@ -266,38 +247,11 @@ let sortMovieToList=(sortBy)=>{
     }
   }
 
-  if(sortBy!="first"){
-    allMoviesList = allMoviesList.sort(sortList);
-  }
-}
-//----------------------------------------------------------------------------//
-
-
-
-//---------------------- setting up pages ------------------------------------>>
-
-let showPages=()=>{
-
-  // show current page movies
-  let totalPageNumber = allMoviesOrginList.length/ showMovies
-  totalPageNumber = Math.ceil(totalPageNumber)
-  if(pageNumber>totalPageNumber){
-    pageNumber-=1;
-  }
-
-  let endPoss = endAtMovies*pageNumber;
-  let startPoss = endPoss-showMovies;
-
-  if(endPoss>allMoviesOrginList.length){
-    endPoss = allMoviesOrginList.length;
-    startPoss = allMoviesOrginList.length-showMovies;
-    startPoss = endAtMovies*(pageNumber-1)
-  }
-  allMoviesList = allMoviesList.slice(startPoss,endPoss);
-
+  if(sortBy !== ""){ // only when user push button to sort
+    allMoviesList.sort(sortList);
+  } 
 
 }
-
 //----------------------------------------------------------------------------//
 
 
@@ -308,12 +262,10 @@ let showPages=()=>{
 
 let configSort = (event,sortBy)=>{
   if (event.target.innerText == `${sortBy} A-Z`){
-    showPages();
     renderMovies();
     event.target.innerText =`${sortBy} Z-A`;
   }else{
     allMoviesList.reverse();
-    showPages();
     renderMovies();
     event.target.innerText =`${sortBy} A-Z`;
 
@@ -323,151 +275,14 @@ let configSort = (event,sortBy)=>{
 //----------------------------------------------------------------------------//
 
 
-
-
 //------------------------ REMOVE MOVIE -------------------------------------->>
+
 removeMovie=(dbid)=>{
+  console.log(dbid);
   firedb.ref(`/movies/${dbid}`).remove();
 }
-//----------------------------------------------------------------------------//
 
 
-
-
-
-// ----------------------- PAGINATION ---------------------------------------->>
-let paginationSetup=()=>{
-  let totalPageNumber = allMoviesOrginList.length/ showMovies
-  totalPageNumber = Math.ceil(totalPageNumber)
-  let paginationList = document.getElementById('pagination');
-  if(paginationList.innerText!=""){
-    paginationList.innerHTML = "";
-  }
-
-  for(let i = 1; i<=totalPageNumber; i++){
-    let li = document.createElement("li");
-    let a = document.createElement("a");
-    a.className = ("paginationList");
-    a.setAttribute("href","#")
-    a.innerText = i;
-    paginationSetupAddEventListener(a);
-    li.appendChild(a);
-    paginationList.appendChild(li)
-  }
-  paginationMark(); //markes the current page
-}
-
-
-let paginationSetupAddEventListener = (target) =>{
-  target.addEventListener('click', function(event){
-    event.preventDefault();
-    event.stopPropagation();
-    pageNumber = target.innerText;
-    sortMovieToList(sortBy);
-    showPages();
-    renderMovies();
-    paginationMark();
-  })
-}
-//----------------------------------------------------------------------------//
-
-
-
-//----------------------- MARK CURRENT PAGE IN PAGINATION -------------------->>
-let paginationMark=()=>{
-  let paginationList = document.getElementById('pagination');
-  children = paginationList.children;
-
-  for(let i = 0; i < children.length; i++){
-    if(i == pageNumber-1){
-          paginationList.children[i].className="active";
-    }else{
-      paginationList.children[i].className="";
-    }
-  }
-}
-
-//----------------------------------------------------------------------------//
-
-
-
-
-
-
-//--------------------------  Get movies from db on Start--------------------->>
-let getMovieFromDbFirstTime = ()=>{
-  firedb.ref('movies/').once('value', function(snapshot){
-    allMoviesInDb = snapshot.val();
-
-    for(let item in allMoviesInDb){
-      allMoviesInDb[item].databaseid= item;  //added to have the right referens from firebase.
-      allMoviesOrginList.push(allMoviesInDb[item])
-    }
-
-    sortMovieToList("first");  // sort movies by title
-    showPages();               // setup diffrent pages
-    paginationSetup();         // adds pagination at bot
-    renderMovies();            // render movies on the html page
-
-  })
-}
-
-//----------- -----------------------------------------------------------------//
-
-
-
-//-------------------Firebase child added / changed / removed ---------------->>
-
-let setupDbListener= ()=>{
-  let first = true;
-  firedb.ref('movies/').limitToLast(1).on('child_added',function(snapshot,prevChildKey){ //added
-    if(first){
-      first = false;
-    }else{
-      let data = snapshot.val();
-      let key = snapshot.key;
-      data.databaseid = key;
-      allMoviesOrginList.push(data);
-      updateDom();
-    }
-  })
-
-  firedb.ref('movies/').on('child_changed',function(snapshot){ // changed
-    let data = snapshot.val();
-    let key = snapshot.key;
-    data.databaseid = key;
-
-    allMoviesOrginList.map(x=> {
-      if(x.databaseid == key){
-        let index = allMoviesOrginList.indexOf(x);
-        allMoviesOrginList[index] = data;
-        updateDom();
-      }
-    })
-  })
-
-  firedb.ref('movies/').on('child_removed',function(snapshot){ // removed
-    let key = snapshot.key;
-    allMoviesOrginList = allMoviesOrginList.filter(item => item.databaseid!== key);
-    updateDom();
-
-  })
-
-
-}
-
-//----------------------------------------------------------------------------//
-
-
-//------------------- UPDATE HTML SITE WHEN DB CHANGE------------------------->>
-
-let updateDom=()=>{
-  sortMovieToList(sortBy);  // sort movies by title
-  showPages();               // setup pages
-  paginationSetup();         // adds pagination at bot
-  renderMovies();            // render movies on the html page
-
-}
 
 
 //----------------------------------------------------------------------------//
