@@ -379,7 +379,9 @@ let showPages=()=>{
      movieTotal = allMoviesList.length
   }
 
-
+  if(totalPageNumber<1){
+    totalPageNumber=1;
+  }
   // show current page movies
   totalPageNumber = Math.ceil(totalPageNumber)
   if(pageNumber>totalPageNumber){
@@ -497,6 +499,7 @@ let paginationMark=()=>{
       paginationList.children[i].className="";
     }
   }
+  console.log("sid nummer är: ",pageNumber);
 }
 
 //----------------------------------------------------------------------------//
