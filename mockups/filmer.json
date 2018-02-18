@@ -1,0 +1,228 @@
+{
+  "movies" : {
+    "-L5-_ft9nKLlrI4CHVRf" : {
+      "description" : "Forrest Gumps liv skildras under tre våldsamma decennier. Från att ha ansetts vara efterbliven blir han toppidrottsman, krigshjälte i Vietnam och framgångsrik affärsman. Det enda Forrest egentligen vill är dock att hans livs kärlek Jenny ska ha det bra. Forrest förkroppsligar en tidsålder, en lössläppt oskuld i ett USA på väg att förlora sin oskuld. Hans hjärta vet vad hans begränsade IQ inte kan förstå.",
+      "director" : "Robert Zemeckis",
+      "imdb" : "83",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/z4ROnCrL77ZMzT0MsNXY5j25wS2.jpg",
+      "premiere" : "1994",
+      "title" : "Forrest Gump"
+    },
+    "-L5-aKhr9hl_ypZPx4FZ" : {
+      "description" : "En grupp kommandosoldater sänds ut i djungeln för att rädda några diplomater som har krashat i djungeln. Väl där finner dom diplomaterna slaktade och ger sig på ett gerilla läger i närheten. Endast för att finna att det inte är dom som har gjort det. Den ansvarige är inte mänsklig. Han går inte att se och han kommer efter dom. En efter en...",
+      "director" : "John McTiernan",
+      "imdb" : "73",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/p6fhq04t75yCfE0kSTNZGQvWuQ1.jpg",
+      "premiere" : "1987",
+      "title" : "Rovdjuret"
+    },
+    "-L5-al1U212TONmvseuY" : {
+      "description" : "Dunkirk är berättelsen om de hundratusentals brittiska och allierade trupper som blir invaderade och omringade på stranden vid Dunkerque av fientliga styrkor under andra världskriget.",
+      "director" : "Christpher Nolan",
+      "imdb" : "74",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/ebSnODDg9lbsMIaWg2uAbjn7TO5.jpg",
+      "premiere" : "2017",
+      "title" : "Dunkirk"
+    },
+    "-L5-b2TbJo72HpM1WAks" : {
+      "description" : "Yrkesmördaren John Wick har dragit sig tillbaka men kallas än en gång tillbaka i tjänst när en före detta kollega vill att han ska återbetala en skuld genom att döda en italiensk gangsterboss. När mordförsöket går åt pipan blir Wick jagad av yrkesmördare från hela världen och hans enda chans till överlevnad kan vara en mystisk figur som kallas Bowery King.",
+      "director" : "Derek Kolstad",
+      "imdb" : "68",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/1jvyy3UtMbWBHikj7byFJeY5Fc7.jpg",
+      "premiere" : "2017",
+      "title" : "John Wick: Chapter 2"
+    },
+    "-L5-bMpxUBdDPEefQZWs" : {
+      "description" : "Thomas och hans gäng står denna gång inför en ännu större utmaning när de ska ta reda på allt om organisationen WCKD. De befinner sig nu i ett öde landskap,kallat ”the Scorch”, fyllt av dödliga hinder. Här slår de sig ihop med motståndsrörelsen och kämpar tillsammans mot WCKDs tunga armé. Men kanske är det för sent för att stoppa dem och deras fruktansvärda planer.",
+      "director" : "T.S. Nowlin",
+      "imdb" : "65",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gaDiQbtaopReIiJIfoVmUAdpcJJ.jpg",
+      "premiere" : "2015",
+      "title" : "Maze Runner: The Scorch Trials"
+    },
+    "-L5-bkRx2-IBHc5V2Kca" : {
+      "description" : "År 2049 upptäcker en ny Blade Runner, Los Angeles-polisen K, en sedan länge begravd hemlighet som har potential att försätta vad som är kvar av samhället i kaos. Efter sin upptäckt försöker K leta rätt på Rick Deckard, en före detta Blade Runner som varit försvunnen i trettio år.",
+      "director" : "Denis Villeneuve",
+      "imdb" : "74",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/c0jCZGc0XMW1TpRP2nRCrwY3Tex.jpg",
+      "premiere" : "2017",
+      "title" : "Blade Runner 2049"
+    },
+    "-L5-bw7xiYh03FjVXjNY" : {
+      "description" : "När Tony Stark försöker starta ett fredsbevarande program går det snett. Jordens framtid är hotad och Iron Man, Captain America, Thor, Hulk, Black Widow samt Hawkeye sätts alla nu på prov. När den onde Ultron träder fram är det upp till medlemmarna i Avengers att stoppa honom från att sätta sina planer till verket, vilket leder till ett episkt, unikt och världsomspännande äventyr.",
+      "director" : "Joss Whedon",
+      "imdb" : "73",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/t90Y3G8UGQp0f0DrP60wRu9gfrH.jpg",
+      "premiere" : "2015",
+      "title" : "Avengers: Age of Ultron"
+    },
+    "-L5-cIGZ_VSCL5ElsA6b" : {
+      "description" : "Lucy är en amerikansk student i Taipei som tvingas till att smuggla droger efter att ha blivit satt i en prekär situation av sin pojkvän. Hon är en av fyra som får den nyuppfunna drogen inopererad i sitt innandöme i syfte att smuggla den till Europa. Efter att ha misshandlats av en av knarkkungen Jangs män läcker substanserna ut i hennes blodomlopp, vilket förvandlar henne till en metamänniska som gradvis får tillgång till större och större del av den mänskliga hjärnan.",
+      "director" : "Luc Besson",
+      "imdb" : "62",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/rwn876MeqienhOVSSjtUPnwxn0Z.jpg",
+      "premiere" : "2014",
+      "title" : "Lucy"
+    },
+    "-L5-chHl2GZODWohWrV_" : {
+      "description" : "Brad Pitt och Edward Norton gör två knockoutbra roller i denna häpnadsväckande och originella thriller med ironisk underton av David Fincher, regissören till Seven. Norton spelar Jack, en kroniskt sömnlös man som desperat försöker fly sitt olidligt tråkiga liv. Men så möter han Tyler Durden (Pitt) en karismatisk tvålförsäljare med en snedvriden filosofi. Tyler menar att självförbättring är för de svaga - det är självdestruktion som verkligen gör livet värt att leva. Inom kort är Jack och Tyler i full gång med att mörbulta varandra på en parkeringsplats. Ett renande slagsmål med en endorfinkick utan dess like. För att introducera andra män i denna enkla lycka av fysiskt våld bildar Jack och Tyler en hemlig \"Fight Club\" som snabbt blir omåttligt populär. Men en hemsk överraskning väntar Jack, en sanning som kommer att förändra allt... Filmen innehåller också kommentarer av David Fincher, Brad Pitt, Edward Norton och Helena Bonham Carter.",
+      "director" : "David Fincher",
+      "imdb" : "83",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/4GpwvwDjgwiShr1UBJIn5fk1gwT.jpg",
+      "premiere" : "1999",
+      "title" : "Fight Club"
+    },
+    "-L582YBrZfb2bChUyMrV" : {
+      "description" : "Historien om Minionerna börjar vid tidernas begynnelse. Som gula organismer börjar Minionerna att utvecklas, ständigt på jakt efter att tjäna den mest avskyvärda av mästarna. De misslyckas med att behålla dessa mästare, från T.-rex till Napoleon-Gunstling. Minionerna finner sig till sist själva utan någon att tjäna och faller in i en djup depression. Men en Minionerna vid namn Kevin har en plan, och tillsammans med Stuart och Bob beger de sig ut i världen för att hitta en ny ond boss. Trion börjar en spännande resa som slutligen leder dem till deras nästa potentiella mästare, Scarlet Overkill, världens första kvinnliga superskurk.",
+      "director" : "Kyle Balda",
+      "imdb" : "64",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/fUS9ulEnr5xiFMgtVIaKrg1cd3L.jpg",
+      "premiere" : "2015",
+      "title" : "Minioner"
+    },
+    "-L5D4ubQ-qgvwVJStSjQ" : {
+      "description" : "Av rädsla för vad en gudalik superhjältes ohämmade krafter kan leda till tar sig Gothams egen brottsbekämpare an Metroplis högaktade hjälte. Samtidigt frågar sig världen vilken hjälte de faktiskt behöver, för medan Superman och Batman strider mot varandra uppstår ett nytt hot, ett hot större än något mänskligheten tidigare skådat.",
+      "director" : "Zack Snyder",
+      "imdb" : "57",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/cGOPbv9wA5gEejkUN892JrveARt.jpg",
+      "premiere" : "2016",
+      "title" : "Batman v Superman: Dawn of Justice"
+    },
+    "-L5D56UgeXGafeg9PATb" : {
+      "description" : "De två extremt fantasifulla busungarna George och Harold hypnotiserar sin rektor till att tro att han är en superhjälte som heter Kapten Kalsong.",
+      "director" : "Zack Snyder",
+      "imdb" : "62",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/AjHZIkzhPXrRNE4VSLVWx6dirK9.jpg",
+      "premiere" : "2017",
+      "title" : "Kapten Kalsong-Filmen"
+    },
+    "-L5D5KJaE678Bt05rPj2" : {
+      "description" : "En ung gatumagiker får ta hand om sin lillasyster när deras föräldrar dör och börjar sälja droger för att kunna försörja sig och systern.",
+      "director" : "J.D. Dillard",
+      "imdb" : "52",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/wridRvGxDqGldhzAIh3IcZhHT5F.jpg",
+      "premiere" : "2017",
+      "title" : "Sleight"
+    },
+    "-L5D5VmAUhmj-5HOWR8N" : {
+      "description" : "Hon är bara en liten flicka. Men hon är beredd att riskera allt för att skydda sin jättelika vän från giriga pampar.",
+      "director" : "Bon Joon-ho",
+      "imdb" : "76",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/pHlRr2MfjK77VIIAO7p0R4jhsJI.jpg",
+      "premiere" : "2017",
+      "title" : "Okja"
+    },
+    "-L5D5lDZ8kKXcxkqAvWd" : {
+      "description" : "After suffering a family tragedy, Mack Phillips spirals into a deep depression causing him to question his innermost beliefs. Facing a crisis of faith, he receives a mysterious letter urging him to an abandoned shack deep in the Oregon wilderness. Despite his doubts, Mack journeys to the shack and encounters an enigmatic trio of strangers led by a woman named Papa. Through this meeting, Mack finds important truths that will transform his understanding of his tragedy and change his life forever.",
+      "director" : "Stuart Hazeldine",
+      "imdb" : "70",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/doAzav9kfdtsoSdw1MDFvjKq3J4.jpg",
+      "premiere" : "2017",
+      "title" : "The Shack"
+    },
+    "-L5D5wfseqVFpSb5Up-c" : {
+      "description" : "Plötsligt lamslås den lilla staden Derry i amerikanska delstaten Maine av skräck när flera barn mystiskt börjar försvinna. Några barn får möta sina största rädslor, när de hamnar i den onda clownen Pennywise sällskap, vars historia som mördare sträcker sig långt, långt bakåt i tiden. Bill Skarsgård spelar huvudrollen i nya skräckfilmen Det som bygger på Stephen Kings välkända roman med samma namn.",
+      "director" : "Andy Muschietti",
+      "imdb" : "71",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/tHPPoqUGylssZxIs086PYsmISaR.jpg",
+      "premiere" : "2017",
+      "title" : "Det"
+    },
+    "-L5D69GCN0Sg5UnozIN3" : {
+      "description" : "När den lekfulla bläckfisken Bläckis ställer till problem för sin fiskkoloni så får han order av stammens stränge ledare Kraken att ge sig iväg efter hjälp. Han tar med sig sina två bästisar, en kaxig räka och en korkad prickfisk. Bläckis och hans kompisar ger sig iväg på en storslagen och spännande resa genom undervattensstäder, sjunkna fartyg och dessutom möter de många fantastiska varelser som hjälper dem på vägen",
+      "director" : "Julio Soto Gurpide",
+      "imdb" : "58",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/zMZTBbBa9eevwpWoVIVHh4Gm1ij.jpg",
+      "premiere" : "2017",
+      "title" : "Deep"
+    },
+    "-L5D6_sZH_TROYQKn6vQ" : {
+      "description" : "Ett urgammalt hot, äldre än själva kosmos, hotar att störta hela världen i mörker. För att rädda mänskligheten och sin älskade Jane Foster måste den mäktige Thor forma en allians med sin värsta fiende. Men det som är värt att slåss för kräver ibland de yttersta offren.",
+      "director" : "Alan Taylor",
+      "imdb" : "67",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/bnX5PqAdQZRXSw3aX3DutDcdso5.jpg",
+      "premiere" : "2013",
+      "title" : "Thor: The Dark World"
+    },
+    "-L5D6pOOCisljlWiF-OW" : {
+      "description" : "I Thor: Ragnarök hålls Thor fängslad på andra sidan universum utan sin mäktiga hammare. Han för en kamp mot tiden för att ta sig tillbaka till Asgård för att stoppa Ragnarök – förstörelsen av hans hemvärld och slutet för hela den Asgårdska civilisationen. Thor ställs inför ett nytt hot, den mäktiga och hänsynslösa Hela. Men innan dess måsta han överleva en dödlig gladiatortävling där han tvingas kämpa mot sin forna bundsförvant och vän från Avengers – Hulken.",
+      "director" : "Taika Waititi",
+      "imdb" : "74",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/avy7IR8UMlIIyE2BPCI4plW4Csc.jpg",
+      "premiere" : "2017",
+      "title" : "Thor: Ragnarök"
+    },
+    "-L5D7FKWmMvhsyEUNJfj" : {
+      "description" : "Vi befinner oss i bitande kalla Wyoming, där viltvårdaren Cory Lambert spårar vilddjur som river boskap. En dag finner han det frusna liket av en ung kvinna som tillhörde traktens urinnevånare. Det visar sig vara Lamberts döda dotters väninna Natalie, vilket väcker smärtsamma minnen till liv. För att lösa fallet skickar FBI Jane Banner från Las Vegas-kontoret, som anländer i en vräkig Suv som är lika illa lämpad för vildmarken som Banner själv. Banner och Lambert utgör ett högst omaka par i jakten på mördaren.",
+      "director" : "Taylor Sheridan",
+      "imdb" : "74",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/pySivdR845Hom4u4T2WNkJxe6Ad.jpg",
+      "premiere" : "2017",
+      "title" : "Wind River"
+    },
+    "-L5D7PRQvi7XYg4EUl9C" : {
+      "description" : "Laura and Carlos love each other as if every day was the last, and perhaps that first love intensity is what will tear them apart a year later.",
+      "director" : "Esteban Crespo",
+      "imdb" : "54",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/6uOMVZ6oG00xjq0KQiExRBw2s3P.jpg",
+      "premiere" : "2017",
+      "title" : "Amar"
+    },
+    "-L5D7wyseW6USgroTzRD" : {
+      "description" : "Djävulens laglöse och motvillige tjänare, Guerrero, återvänder från de döda för att skydda en stulen relik från Jackson Boomer och hans soldatgäng. Men inget kan stoppa Jackson från att återuppliva hans kamrater från de döda och frambringa helvetet på jorden. Nu måste Guerrero använda alla sina mörka krafter i kampen mot Jackson, om det så är det sista han gör.\n\n",
+      "director" : "Roel Reiné",
+      "imdb" : "47",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/bGEgTjxcLF2irOwpLCM64itEkbJ.jpg",
+      "premiere" : "2017",
+      "title" : "Dead Again in Tombstone"
+    },
+    "-L5D85YBHGeNmiSRMkca" : {
+      "description" : "En brokig skara individer med superkrafter samlas ihop av den hemliga organisationen S.H.I.E.L.D. för att skydda planeten mot invaderande styrkor från yttre rymden. Tillsammans bildar de motvilliga superhjältarna gruppen The Avengers.",
+      "director" : "Joss Whedon",
+      "imdb" : "75",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/cezWGskPY5x7GaglTTRN4Fugfb8.jpg",
+      "premiere" : "2014",
+      "title" : "Avengers"
+    },
+    "-L5DGqA33B-VT6eWhy66" : {
+      "description" : "När Jake hittar ledtrådar till ett mysterium som spänner över tid och rum upptäcker han en hemlig plats som kallas Miss Peregrines hem för besynnerliga barn. När Jake lär sig mer om de boende där och deras besynnerligheter inser han att säkerheten är en illusion och att faran lurar som en mäktig och dold fiende. Jake måste lista ut vem som är verklig, vem han kan lita på och vem han verkligen är.",
+      "director" : "Tim Burton",
+      "imdb" : "66",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/tzYkC0vqX8Dokuwynhz1lnWWgWT.jpg",
+      "premiere" : "2016",
+      "title" : "Miss Peregrines hem för besynnerliga barn"
+    },
+    "-L5dpD5jsLn2jWJFKPhh" : {
+      "description" : "Ska hoppa nerför bordet",
+      "director" : "Some",
+      "imdb" : "2",
+      "picture" : "https://image.tmdb.org/t/p/w300_and_h450_bestv2/q0R4crx2SehcEEQEkYObktdeFy.jpg",
+      "premiere" : "231",
+      "title" : "Poop"
+    },
+    "-L5dvDo3opL-3tnYBR9-" : {
+      "description" : "Den moderna däggdjursmetropolen Zootropolis är en stad som inte liknar någon annan. En smältdegel där världens djur, från den största elefanten till den minsta näbbmusen, lever tillsammans i stadsdelar som eleganta Sahara Square och kyliga Tundratown. Men när den alltid lika positiva poliskonstapeln Judy Hopps anländer till Zootropolis, upptäcker hon att det inte är så lätt att vara den första kaninen bland de stora och tuffa djuren i stadens polisstyrka. Fast besluten att bevisa vad hon går för bestämmer hon sig för att knäcka ett knepigt fall.",
+      "director" : "Byron Howard",
+      "imdb" : "77",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/96C7jFKsmV3XZV2TdC8FouIiT4v.jpg",
+      "premiere" : "2016",
+      "title" : "Zootropolis"
+    },
+    "-L5dvfCwHLua1jM52SFb" : {
+      "description" : "Det har gått många år sedan mannen, som kallas Tarzan, lämnade djungeln för ett liv som John Clayton, Lord Greystoke, med sin älskade Jane vid sin sida. Han har nu blivit inbjuden att åka tillbaka till Kongo som ett sändebud åt parlamentet, omedveten om att han bara är en bricka i ett dödligt spel av girighet och hämnd.",
+      "director" : "David Yates",
+      "imdb" : "56",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vZ3GbHsi2KwrLK6dbFeQTATgeM5.jpg",
+      "premiere" : "2016",
+      "title" : "Legenden om Tarzan"
+    },
+    "-L5dy3dB5HHkFxk48Kws" : {
+      "description" : "Miguel är en ung pojke som drömmer om att bli lika bra på gitarr som sin idol Ernesto de la Cruz, Mexikos mest berömda musiker. Men Miguels familj har helt förbjudit musik i generation efter generation. Miguel trotsar förbudet, och upptäcker då ett gammalt släktmysterium vilket leder till att hans familj återförenas på ett både extraordinärt och överraskande sätt.",
+      "director" : "Lee Unkrich",
+      "imdb" : "66",
+      "picture" : "https://image.tmdb.org/t/p/w600_and_h900_bestv2/eKi8dIrr8voobbaGzDpe8w0PVbC.jpg",
+      "premiere" : "2017",
+      "title" : "Coco"
+    }
+  }
+}
