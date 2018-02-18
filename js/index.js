@@ -204,9 +204,10 @@ let saveToDatabase=()=>{
       if(image){
         let str = target.value;
         if(str.includes(".jpg") || str.includes(".jpeg") || str.includes(".png")){
-          console.log("image ok");
+          
         }else{
-          console.log("no image");
+          test = false;
+
           target.style.color = "red";
           target.value="Not a valid picture (jpg,jpeg or png)"
           setTimeout(function (){
