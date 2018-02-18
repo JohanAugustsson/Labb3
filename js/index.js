@@ -135,7 +135,7 @@ let searchStrConfig=(event)=>{
     sortMovieToList(sortBy);
     showPages();               // setup pages
     paginationSetup();
-    document.getElementById('footer').style.display="inline-block";
+    document.getElementById('footer').style.display="flex";
   }else{
     isSortStrUsed=true;
     // lägg till så att denna körs även när man renderar på nytt och söksträng satt
@@ -187,6 +187,47 @@ let saveToDatabase=()=>{
   let imdb = document.getElementsByClassName('form-imdb')[0];
   let description = document.getElementsByClassName('form-description')[0];
   let picture = document.getElementsByClassName('form-picture')[0];
+
+
+  let test = true;
+
+  let testStr = (target,str,image)=>{
+    if(target.value==""){
+      target.style.color = "red";
+      target.value="Missing " + str
+      setTimeout(function () {
+        target.style.color = "black";
+        target.value=""
+      }, 2000);
+      test = false;
+    }else{
+      if(image){
+        let str = target.value;
+        if(str.includes(".jpg") || str.includes(".jpeg") || str.includes(".png")){
+          console.log("image ok");
+        }else{
+          console.log("no image");
+          target.style.color = "red";
+          target.value="Not a valid picture (jpg,jpeg or png)"
+          setTimeout(function (){
+            target.value= str;
+            target.style.color = "black";
+          },2000);
+        }
+      }
+
+    }
+  }
+
+  testStr(title,"title!");
+  testStr(director,"director.");
+  testStr(premiere, "year!");
+  testStr(imdb,"rating!");
+  testStr(description,"description!");
+  testStr(picture,"picture!",true);
+
+
+
   let movieObj = {
     title : String(title.value),
     director: String(director.value),
@@ -196,7 +237,10 @@ let saveToDatabase=()=>{
     picture: String(picture.value)
   }
 
-  firedb.ref('movies/').push(movieObj);
+  if(test){
+    firedb.ref('movies/').push(movieObj);
+
+  }
 
 }
 //-------------------------------------------------------------------------------
@@ -209,7 +253,7 @@ let resetSearchParam=()=>{
   document.getElementById('btn-sortDirector').className="";
   document.getElementById('btn-sortPremiere').className="";
   document.getElementById('input-search').value="";
-  document.getElementById('footer').style.display="inline-block";
+  document.getElementById('footer').style.display="flex";
 
 }
 
@@ -479,6 +523,7 @@ let getMovieFromDbFirstTime = ()=>{
 let setupDbListener= ()=>{
   let first = true;
   firedb.ref('movies/').limitToLast(1).on('child_added',function(snapshot,prevChildKey){ //added
+    console.log("child added");
     if(first){
       first = false;
     }else{
@@ -494,6 +539,7 @@ let setupDbListener= ()=>{
     let data = snapshot.val();
     let key = snapshot.key;
     data.databaseid = key;
+    console.log("child changed");
 
     allMoviesOrginList.map(x=> {
       if(x.databaseid == key){
@@ -505,6 +551,8 @@ let setupDbListener= ()=>{
   })
 
   firedb.ref('movies/').on('child_removed',function(snapshot){ // removed
+    console.log("child removed");
+    first=true;
     let key = snapshot.key;
     allMoviesOrginList = allMoviesOrginList.filter(item => item.databaseid!== key);
     updateDom();
