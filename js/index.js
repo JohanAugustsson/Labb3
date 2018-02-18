@@ -499,7 +499,7 @@ let paginationMark=()=>{
       paginationList.children[i].className="";
     }
   }
-  console.log("sid nummer är: ",pageNumber);
+  //console.log("sid nummer är: ",pageNumber);
 }
 
 //----------------------------------------------------------------------------//
