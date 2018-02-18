@@ -1,6 +1,7 @@
 // Global variables ----------------------------------------------------------->>
 let allMoviesOrginList=[];
 let allMoviesList=[];
+let allMoviesListAllPages = [];
 let startAtMovies = 1;
 let endAtMovies = 6;
 let showMovies = endAtMovies;
@@ -31,7 +32,6 @@ window.addEventListener("load",function(event){
   let btnSortTitle = document.getElementById('btn-sortTitle');
   btnSortTitle.addEventListener('click',function(event){
     sortBy ="title";
-    //sortMovieToList(sortBy);
     configSort(btnSortTitle,"Title");
     updateDom();
   })
@@ -40,7 +40,6 @@ window.addEventListener("load",function(event){
   let btnSortDirector = document.getElementById('btn-sortDirector');
   btnSortDirector.addEventListener('click',function(event){
     sortBy ="director";
-    //sortMovieToList(sortBy);
     configSort(btnSortDirector,"Director");
     updateDom();
   })
@@ -48,7 +47,6 @@ window.addEventListener("load",function(event){
   let btnSortPremiere = document.getElementById('btn-sortPremiere');
   btnSortPremiere.addEventListener('click',function(event){
     sortBy ="premiere";
-    //sortMovieToList(sortBy);
     configSort(btnSortPremiere,"Premiere");
     updateDom();
   })
@@ -68,16 +66,12 @@ window.addEventListener("load",function(event){
     if(pageNumber<1){
       pageNumber=1;
     }
-
     updateDom();
-
   })
 
   document.addEventListener("click",function(event){
     if(event.target.className== "movie-btn-remove"){
       let dbid = event.target.getAttribute('databaseid');
-
-
       if(isEditAble){
         removeMovie(dbid);
       }
@@ -97,6 +91,7 @@ window.addEventListener("load",function(event){
   })
 
   document.getElementById('btn-show-form').addEventListener("click",function(event){
+
     let addMovieUserForm = document.getElementsByClassName("addMovieUserForm")[0];
     if(document.getElementsByClassName("addMovieUserForm")[0].style.display == "flex"){
       addMovieUserForm.style.display= "none";
@@ -105,15 +100,13 @@ window.addEventListener("load",function(event){
       addMovieUserForm.style.display= "flex";
       document.getElementById('btn-show-form').innerText="Close";
     }
-    console.log("funka");
+
   })
 
   setupDbListener();
 
-
 });
 //---- windows load end-------------------------------------------------------//
-
 
 
 
@@ -133,6 +126,7 @@ let searchStrConfig=(event)=>{
   if(searchStr==""){
     allMoviesList= []; //reset the string search
     allMoviesList = allMoviesOrginList.map(x=>x);
+    renderMovies();
     isSortStrUsed=false;
   }else{
     isSortStrUsed=true;
@@ -142,8 +136,7 @@ let searchStrConfig=(event)=>{
 
 let searchByStr=()=>{
   let searchStr = document.getElementById('input-search').value;
-  //allMoviesList= [];
-  //allMoviesList = allMoviesOrginList.map(x=>x);
+
   searchStr = searchStr.toLowerCase();
   allMoviesList = allMoviesOrginList.filter(item=>{
     let title = item.title;
@@ -177,6 +170,7 @@ let searchByStr=()=>{
 
 
   allMoviesList = allMoviesList.sort(sortList);
+  allMoviesListAllPages = allMoviesList;
 }
 
 // ---------------------------------------------------------------------------//
@@ -245,6 +239,17 @@ let saveToDatabase=()=>{
 
   if(test){
     firedb.ref('movies/').push(movieObj);
+    document.getElementsByClassName('popUpMsg')[0].innerText="Movie added";
+    setTimeout(function () {
+        document.getElementsByClassName('popUpMsg')[0].innerText="";
+    }, 2000);
+
+    title.value ="";
+    director.value ="";
+    premiere.value ="";
+    imdb.value ="";
+    description.value ="";
+    picture.value ="";
 
   }
 
@@ -258,7 +263,6 @@ let saveToDatabase=()=>{
 let renderMovies = ()=>{
   let movieContainer = document.getElementsByClassName("movie-container")[0];
   movieContainer.innerText="";
-
   allMoviesList.map(item=>{
     let picture = item.picture
     let title = item.title
@@ -279,7 +283,7 @@ let renderMovies = ()=>{
                       <p class="movie-premiere"></p>
                        <span>Description: </span>
                       <p class="movie-description"></p>
-                      <button class="movie-btn-remove">x</button>
+                      <button class="movie-btn-remove">Delete</button>
 
                     </div>`
 
@@ -337,8 +341,6 @@ let handleMovie=(target,str,dbId,path)=>{
 let sortMovieToList=(sortBy)=>{
 
   if(isSortStrUsed){
-    console.log("str is used");
-    console.log(allMoviesList);
     searchByStr();
   }else{
     allMoviesList= [];
@@ -376,14 +378,14 @@ let showPages=()=>{
      totalPageNumber = allMoviesOrginList.length/ showMovies
      movieTotal = allMoviesList.length
   }
-  //let totalPageNumber = allMoviesOrginList.length/ showMovies
+
 
   // show current page movies
   totalPageNumber = Math.ceil(totalPageNumber)
   if(pageNumber>totalPageNumber){
     pageNumber-=1;
   }
-  console.log(totalPageNumber);
+
   let endPoss = endAtMovies*pageNumber;
   let startPoss = endPoss-showMovies;
 
@@ -443,7 +445,7 @@ removeMovie=(dbid)=>{
 let paginationSetup=()=>{
   let totalPageNumber = 0;
   if(isSortStrUsed){
-    totalPageNumber = allMoviesList.length/ showMovies
+    totalPageNumber = allMoviesListAllPages.length/ showMovies
   }else{
     totalPageNumber = allMoviesOrginList.length/ showMovies
   }
@@ -514,10 +516,6 @@ let getMovieFromDbFirstTime = ()=>{
       allMoviesOrginList.push(allMoviesInDb[item])
     }
 
-    //sortMovieToList("first");  // sort movies by title
-    //showPages();               // setup diffrent pages
-    //paginationSetup();         // adds pagination at bot
-    //renderMovies();            // render movies on the html page
     updateDom();
   })
 }
@@ -531,7 +529,7 @@ let getMovieFromDbFirstTime = ()=>{
 let setupDbListener= ()=>{
   let first = true;
   firedb.ref('movies/').limitToLast(1).on('child_added',function(snapshot,prevChildKey){ //added
-    //console.log("child added");
+
     if(first){
       first = false;
     }else{
@@ -547,7 +545,7 @@ let setupDbListener= ()=>{
     let data = snapshot.val();
     let key = snapshot.key;
     data.databaseid = key;
-    console.log("child changed");
+
 
     allMoviesOrginList.map(x=> {
       if(x.databaseid == key){
@@ -577,24 +575,7 @@ let setupDbListener= ()=>{
 //------------------- UPDATE HTML SITE WHEN DB CHANGE------------------------->>
 
 let updateDom=()=>{
-  /*
-  if(isSortStrUsed){ // when collect data from data.. use the same filter when return.
-    searchByStr();
-    showPages();
-    paginationSetup();
-    renderMovies();
-  }else{
 
-    sortMovieToList(sortBy);  // sort movies by title
-    if(sortReverse){
-      allMoviesList.reverse();
-    }
-
-    showPages();               // setup pages
-    paginationSetup();         // adds pagination at bot
-    renderMovies();            // render movies on the html page
-  }
-  */
   sortMovieToList(sortBy);
   if(sortReverse){
     allMoviesList.reverse();
@@ -604,6 +585,5 @@ let updateDom=()=>{
   paginationSetup();  // puts pagination on page
 
 }
-
 
 //----------------------------------------------------------------------------//

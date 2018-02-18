@@ -6,6 +6,7 @@ body{
 *{
   font-family: monospace;
   font-family: 'Righteous', cursive;
+  font-weight: 100;
 }
 .searchBar{
   display: flex;
@@ -44,18 +45,20 @@ body{
   max-width: 300px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+
 }
 .menubar button{
   display: inline-block;
   border-radius: 7px;
   margin: 10px;
   padding: 5px;
-  width: 140px;
+  width: 130px;
   background-color: #ffff;
 }
 
 .menubar  ul{
   display: inline-block;
+  color: white;
 }
 .menubar  li{
   list-style: none;
@@ -113,7 +116,8 @@ body{
 .movie-info .movie-btn-remove{
   position: absolute;
   right: 0px;
-  top: 0px;
+  color: red;
+
 }
 p.movie-description{
 
@@ -186,6 +190,7 @@ p.movie-description{
   border-radius: 7px;
   padding: 3px;
 }
+
 .form-description{
   height: 7em;
 }
@@ -297,5 +302,19 @@ p.movie-description{
   .movie{
     width: 18em;
     height: 27em;
+  }
+}
+
+@media screen and (max-width: 340px){
+  .movie{
+    width: 13em;
+    height: 20em;
+  }
+}
+
+@media screen and (max-width: 250px){
+  .movie{
+    width: 7em;
+    height: 12em;
   }
 }
