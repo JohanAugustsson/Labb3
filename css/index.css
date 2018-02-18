@@ -116,12 +116,14 @@ body{
 .movie-info .movie-btn-remove{
   position: absolute;
   right: 0px;
+  width: 100%;
+  height: 30px;
   color: red;
-
 }
-p.movie-description{
-
+button:hover{
+  cursor: pointer;
 }
+
 .movie-container .medium{
   grid-column: span 8;
   grid-row: span 16;
