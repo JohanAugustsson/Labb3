@@ -28,6 +28,7 @@ body{
   min-width: 440px;
   border-radius: 10px;
 }
+
 .wrapper{
   display: flex;
   max-width: 1200px;
