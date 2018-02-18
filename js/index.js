@@ -126,7 +126,7 @@ let searchStrConfig=(event)=>{
   if(searchStr==""){
     allMoviesList= []; //reset the string search
     allMoviesList = allMoviesOrginList.map(x=>x);
-    renderMovies();
+    //renderMovies();
     isSortStrUsed=false;
   }else{
     isSortStrUsed=true;
