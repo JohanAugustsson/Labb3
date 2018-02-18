@@ -523,7 +523,7 @@ let getMovieFromDbFirstTime = ()=>{
 let setupDbListener= ()=>{
   let first = true;
   firedb.ref('movies/').limitToLast(1).on('child_added',function(snapshot,prevChildKey){ //added
-    console.log("child added");
+    //console.log("child added");
     if(first){
       first = false;
     }else{
@@ -539,7 +539,7 @@ let setupDbListener= ()=>{
     let data = snapshot.val();
     let key = snapshot.key;
     data.databaseid = key;
-    console.log("child changed");
+    //console.log("child changed");
 
     allMoviesOrginList.map(x=> {
       if(x.databaseid == key){
@@ -551,7 +551,7 @@ let setupDbListener= ()=>{
   })
 
   firedb.ref('movies/').on('child_removed',function(snapshot){ // removed
-    console.log("child removed");
+    //console.log("child removed");
     first=true;
     let key = snapshot.key;
     allMoviesOrginList = allMoviesOrginList.filter(item => item.databaseid!== key);
