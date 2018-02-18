@@ -104,6 +104,18 @@ window.addEventListener("load",function(event){
     updateDom();
   })
 
+  document.getElementById('btn-show-form').addEventListener("click",function(event){
+    let addMovieUserForm = document.getElementsByClassName("addMovieUserForm")[0];
+    if(document.getElementsByClassName("addMovieUserForm")[0].style.display == "flex"){
+      addMovieUserForm.style.display= "none";
+      document.getElementById('btn-show-form').innerText="Add Movie";
+    }else{
+      addMovieUserForm.style.display= "flex";
+      document.getElementById('btn-show-form').innerText="Close";
+    }
+    console.log("funka");
+  })
+
   setupDbListener();
 
 
@@ -204,10 +216,9 @@ let saveToDatabase=()=>{
       if(image){
         let str = target.value;
         if(str.includes(".jpg") || str.includes(".jpeg") || str.includes(".png")){
-          
+          //test passed
         }else{
           test = false;
-
           target.style.color = "red";
           target.value="Not a valid picture (jpg,jpeg or png)"
           setTimeout(function (){
